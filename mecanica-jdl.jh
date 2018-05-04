@@ -1,27 +1,23 @@
-entity Appareil {
+entity Bloc {
 	code String,
+	name String,
 	description String,
 	valide Boolean
-}
-entity Produit {
-	nom String
-}
-entity Modele {
-	designation String
-}
-relationship ManyToOne {
-	Appareil{modele} to Modele , Appareil{produit} to Produit , Appareil{couleur} to Couleur , Modele{produit} to Produit
 }
 entity Article {
 	code String,
 	description String,
+	prixAchat BigDecimal,
 	prixVente BigDecimal,
 	note String,
 	valide Boolean,
 	existenceMagasin Boolean,
 	barCode String
 }
-entity Magasin {
+relationship ManyToOne {
+	Article{bloc} to Bloc
+}
+entity Model {
 	code String,
 	description String,
 	adresse String,
@@ -30,138 +26,26 @@ entity Magasin {
 	email String,
 	valide Boolean
 }
-entity Horaire {
-	jour Jour,
-	heureDebutMatinee String,
-	heureFinMatinee String,
-	heureDebutSoir String,
-	heureFinSoir String
-}
-enum Jour {
-	LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE
-}
 relationship ManyToOne {
-	Horaire{magasin} to Magasin
+	Model{article} to Article
 }
-entity CategorieProbleme {
+entity Marque {
 	code String,
+	name String,
 	description String,
 	valide Boolean
 }
-entity Reservation {
+entity Car {
 	code String,
+	name String,
 	description String,
-	dateReservation Instant required
-}
-entity FicheClient {
-	nomClient String required,
-	prenomClient String required,
-	emailClient String,
-	telephoneClient String
-	notification String
-}
-entity FicheProduit {
+	valide Boolean
 }
 relationship ManyToOne {
-	Reservation{ficheClient required} to FicheClient , Reservation{ficheProduit required} to FicheProduit
-}
-entity Reparation {
-	code String,
-	description String,
-	codePin String,
-	dateReservation Instant required,
-	status StatusReparation,
-	prixTotal BigDecimal,
-	questionInfo QuestionInfo,
-	modePayement ModePayement,
-	rapport Rapport
-}
-entity Couleur {
-	nom String
+	Car{marque} to Marque
 }
 relationship ManyToMany {
-	Modele{couleur} to Couleur{modele}
-}
-enum StatusReparation {
-	EN_REPARATION, REPARE
-}
-enum QuestionInfo {
-	PUBLICITE, CLIENT, PASSEPAROLE, INTERNET
-}
-enum ModePayement {
-	BANCOMAT, CARTE_CREDIT, CASH, CHEQUE
-}
-enum Rapport {
-	FACTURE, RECU
-}
-entity Facture {
-	adresse String,
-	ville String,
-	codeFiscal String,
-	note String
-}
-entity TestPerformance {
-	status StatusTest,
-	rapportDoc String
-}
-entity DetailTest {
-	state TestCheckStatus
-}
-entity CheckList {
-	code String,
-	description String,
-	nom String
-}
-enum StatusTest {
-	ENTREE, SORTIE
-}
-enum TestCheckStatus {
-	EN_MARCHE, DEGRADE, EN_PANNE
-}
-relationship ManyToOne {
-	TestPerformance{ficheProduit required} to FicheProduit
-}
-relationship ManyToOne {
-	DetailTest{test required} to TestPerformance , DetailTest{checkList required} to CheckList
-}
-relationship OneToOne {
-	Reparation{ficheClient required} to FicheClient , Reparation{ficheProduit required} to FicheProduit , Reparation{reservation} to Reservation , Reparation{facture} to Facture
-}
-relationship ManyToOne{
-	Reparation{couleur} to Couleur , Reservation{couleur} to Couleur , Reparation{user} to User
-}
-relationship ManyToMany {
-	Reparation{article} to Article{reparation}
-}
-relationship ManyToOne {
-	FicheProduit{magasin required} to Magasin , FicheProduit{categorieProbleme required} to CategorieProbleme , FicheProduit{appareil} to Appareil
-}
-entity Fournisseur {
-	code String,
-	description String,
-	email String
-}
-entity Achat {
-	description String,
-	dateReception Instant,
-	quantite Double,
-	prixVente BigDecimal
-	total BigDecimal
-}
-relationship ManyToOne {
-	Article{fournisseurDernier} to Fournisseur , Achat{fournisseur required} to Fournisseur , Achat{article} to Article
-}
-entity Mouvement {
-	description String,
-	dateMouvement Instant,
-	quantite Double,
-	status StatusMouvement
-}
-relationship ManyToOne {
-	Mouvement{article} to Article
-}
-enum StatusMouvement {
-	ENTREE, SORTIE
+	Article{car} to Car{article}
 }
 paginate all with pagination
 service all with serviceClass
