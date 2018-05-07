@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "bloc",
+            "otherEntityName": "bloc",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "article",
+            "relationshipName": "car",
+            "otherEntityName": "car",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prixAchat",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "prixVente",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valide",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "existenceMagasin",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "barCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180507103618",
+    "entityTableName": "article",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false
+}

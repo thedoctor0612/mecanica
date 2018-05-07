@@ -1,0 +1,31 @@
+
+{
+    "mecanicaApp": {
+        "article" : {
+            "home": {
+                "title": "Articles",
+                "createLabel": "Create a new Article",
+                "createOrEditLabel": "Create or edit a Article"
+            },
+            "created": "A new Article is created with identifier {{ param }}",
+            "updated": "A Article is updated with identifier {{ param }}",
+            "deleted": "A Article is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Article {{ id }}?"
+            },
+            "detail": {
+                "title": "Article"
+            },
+            "code": "Code",
+            "description": "Description",
+            "prixAchat": "Prix Achat",
+            "prixVente": "Prix Vente",
+            "note": "Note",
+            "valide": "Valide",
+            "existenceMagasin": "Existence Magasin",
+            "barCode": "Bar Code",
+            "bloc": "Bloc",
+            "car": "Car"
+        }
+    }
+}

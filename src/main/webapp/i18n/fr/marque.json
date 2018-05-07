@@ -1,0 +1,25 @@
+
+{
+    "mecanicaApp": {
+        "marque" : {
+            "home": {
+                "title": "Marques",
+                "createLabel": "Créer un nouveau Marque",
+                "createOrEditLabel": "Créer ou éditer un Marque"
+            },
+            "created": "Un nouveau Marque a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Marque avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Marque avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Marque {{ id }} ?"
+            },
+            "detail": {
+                "title": "Marque"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "valide": "Valide"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+
+{
+    "mecanicaApp": {
+        "bloc" : {
+            "home": {
+                "title": "Blocs",
+                "createLabel": "Create a new Bloc",
+                "createOrEditLabel": "Create or edit a Bloc"
+            },
+            "created": "A new Bloc is created with identifier {{ param }}",
+            "updated": "A Bloc is updated with identifier {{ param }}",
+            "deleted": "A Bloc is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Bloc {{ id }}?"
+            },
+            "detail": {
+                "title": "Bloc"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "valide": "Valide"
+        }
+    }
+}

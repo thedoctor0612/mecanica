@@ -1,0 +1,44 @@
+
+<div *ngIf="car">
+    <h2><span jhiTranslate="mecanicaApp.car.detail.title">Car</span> {{car.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="mecanicaApp.car.code">Code</span></dt>
+        <dd>
+            <span>{{car.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.car.name">Name</span></dt>
+        <dd>
+            <span>{{car.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.car.description">Description</span></dt>
+        <dd>
+            <span>{{car.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.car.valide">Valide</span></dt>
+        <dd>
+            <span>{{car.valide}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.car.marque">Marque</span></dt>
+        <dd>
+            <div *ngIf="car.marque">
+                <a [routerLink]="['/marque', car.marque?.id]">{{car.marque?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

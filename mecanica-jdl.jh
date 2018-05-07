@@ -17,18 +17,6 @@ entity Article {
 relationship ManyToOne {
 	Article{bloc} to Bloc
 }
-entity Model {
-	code String,
-	description String,
-	adresse String,
-	ville String,
-	telephone String,
-	email String,
-	valide Boolean
-}
-relationship ManyToOne {
-	Model{article} to Article
-}
 entity Marque {
 	code String,
 	name String,

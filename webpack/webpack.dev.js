@@ -24,7 +24,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
                 '/h2-console',
                 '/auth'
             ],
-            target: 'http://127.0.0.1:8080',
+            target: 'http://127.0.0.1:8090',
             secure: false
         }],
         watchOptions: {
@@ -78,13 +78,13 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     plugins: [
         new BrowserSyncPlugin({
             host: 'localhost',
-            port: 9000,
+            port: 6000,
             proxy: {
-                target: 'http://localhost:9060'
+                target: 'http://localhost:6060'
             }
         }, {
-            reload: false
-        }),
+                reload: false
+            }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.NamedModulesPlugin(),
         new writeFilePlugin(),

@@ -42,6 +42,12 @@ public class CacheConfiguration {
             cm.createCache(org.ms.mecanica.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(org.ms.mecanica.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(org.ms.mecanica.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(org.ms.mecanica.domain.Bloc.class.getName(), jcacheConfiguration);
+            cm.createCache(org.ms.mecanica.domain.Article.class.getName(), jcacheConfiguration);
+            cm.createCache(org.ms.mecanica.domain.Article.class.getName() + ".cars", jcacheConfiguration);
+            cm.createCache(org.ms.mecanica.domain.Marque.class.getName(), jcacheConfiguration);
+            cm.createCache(org.ms.mecanica.domain.Car.class.getName(), jcacheConfiguration);
+            cm.createCache(org.ms.mecanica.domain.Car.class.getName() + ".articles", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

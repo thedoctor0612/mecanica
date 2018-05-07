@@ -1,0 +1,86 @@
+<div>
+    <h2>
+        <span jhiTranslate="mecanicaApp.article.home.title">Articles</span>
+        <button class="btn btn-primary float-right jh-create-entity create-article" [routerLink]="['/', { outlets: { popup: ['article-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="mecanicaApp.article.home.createLabel">
+            Create new Article
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="articles">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="mecanicaApp.article.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="mecanicaApp.article.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="prixAchat"><span jhiTranslate="mecanicaApp.article.prixAchat">Prix Achat</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="prixVente"><span jhiTranslate="mecanicaApp.article.prixVente">Prix Vente</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="note"><span jhiTranslate="mecanicaApp.article.note">Note</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="valide"><span jhiTranslate="mecanicaApp.article.valide">Valide</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="existenceMagasin"><span jhiTranslate="mecanicaApp.article.existenceMagasin">Existence Magasin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="barCode"><span jhiTranslate="mecanicaApp.article.barCode">Bar Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="bloc.id"><span jhiTranslate="mecanicaApp.article.bloc">Bloc</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let article of articles ;trackBy: trackId">
+                <td><a [routerLink]="['../article', article.id ]">{{article.id}}</a></td>
+                <td>{{article.code}}</td>
+                <td>{{article.description}}</td>
+                <td>{{article.prixAchat}}</td>
+                <td>{{article.prixVente}}</td>
+                <td>{{article.note}}</td>
+                <td>{{article.valide}}</td>
+                <td>{{article.existenceMagasin}}</td>
+                <td>{{article.barCode}}</td>
+                <td>
+                    <div *ngIf="article.bloc">
+                        <a [routerLink]="['../bloc', article.bloc?.id ]" >{{article.bloc?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../article', article.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="articles && articles.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+
+<div *ngIf="article">
+    <h2><span jhiTranslate="mecanicaApp.article.detail.title">Article</span> {{article.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="mecanicaApp.article.code">Code</span></dt>
+        <dd>
+            <span>{{article.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.description">Description</span></dt>
+        <dd>
+            <span>{{article.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.prixAchat">Prix Achat</span></dt>
+        <dd>
+            <span>{{article.prixAchat}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.prixVente">Prix Vente</span></dt>
+        <dd>
+            <span>{{article.prixVente}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.note">Note</span></dt>
+        <dd>
+            <span>{{article.note}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.valide">Valide</span></dt>
+        <dd>
+            <span>{{article.valide}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.existenceMagasin">Existence Magasin</span></dt>
+        <dd>
+            <span>{{article.existenceMagasin}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.barCode">Bar Code</span></dt>
+        <dd>
+            <span>{{article.barCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.bloc">Bloc</span></dt>
+        <dd>
+            <div *ngIf="article.bloc">
+                <a [routerLink]="['/bloc', article.bloc?.id]">{{article.bloc?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="mecanicaApp.article.car">Car</span></dt>
+        <dd>
+            <span *ngFor="let car of article.cars; let last = last">
+                <a [routerLink]="['/car', car?.id ]">{{car.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

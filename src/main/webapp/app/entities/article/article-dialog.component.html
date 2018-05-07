@@ -1,0 +1,78 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myArticleLabel" jhiTranslate="mecanicaApp.article.home.createOrEditLabel">Create or edit a Article</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!article.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="article.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="article.code" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="article.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.prixAchat" for="field_prixAchat">Prix Achat</label>
+            <input type="number" class="form-control" name="prixAchat" id="field_prixAchat"
+                [(ngModel)]="article.prixAchat" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.prixVente" for="field_prixVente">Prix Vente</label>
+            <input type="number" class="form-control" name="prixVente" id="field_prixVente"
+                [(ngModel)]="article.prixVente" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.note" for="field_note">Note</label>
+            <input type="text" class="form-control" name="note" id="field_note"
+                [(ngModel)]="article.note" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.valide" for="field_valide">Valide</label>
+            <input type="checkbox" class="form-control" name="valide" id="field_valide"
+                [(ngModel)]="article.valide" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.existenceMagasin" for="field_existenceMagasin">Existence Magasin</label>
+            <input type="checkbox" class="form-control" name="existenceMagasin" id="field_existenceMagasin"
+                [(ngModel)]="article.existenceMagasin" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.barCode" for="field_barCode">Bar Code</label>
+            <input type="text" class="form-control" name="barCode" id="field_barCode"
+                [(ngModel)]="article.barCode" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="mecanicaApp.article.bloc" for="field_bloc">Bloc</label>
+            <select class="form-control" id="field_bloc" name="bloc" [(ngModel)]="article.bloc" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="blocOption.id === article.bloc?.id ? article.bloc : blocOption" *ngFor="let blocOption of blocs; trackBy: trackBlocById">{{blocOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="mecanicaApp.article.car" for="field_car">Car</label>
+            <select class="form-control" id="field_car" multiple name="car" [(ngModel)]="article.cars">
+                <option [ngValue]="getSelected(article.cars, carOption)" *ngFor="let carOption of cars; trackBy: trackCarById">{{carOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
