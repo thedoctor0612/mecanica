@@ -27,6 +27,8 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import { MecanicaLayoutsModule } from './layouts/layouts.module';
+import { NgxBarcodeModule } from 'ngx-barcode';
 
 @NgModule({
     imports: [
@@ -38,6 +40,8 @@ import {
         MecanicaAdminModule,
         MecanicaAccountModule,
         MecanicaEntityModule,
+        MecanicaLayoutsModule,
+        NgxBarcodeModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
