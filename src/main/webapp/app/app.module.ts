@@ -1,35 +1,24 @@
 import './vendor.ts';
 
-import { NgModule, Injector } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Ng2Webstorage, LocalStorageService, SessionStorageService } from 'ngx-webstorage';
-import { JhiEventManager } from 'ng-jhipster';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { MecanicaSharedModule, UserRouteAccessService } from './shared';
-import { MecanicaAppRoutingModule } from './app-routing.module';
-import { MecanicaHomeModule } from './home/home.module';
-import { MecanicaAdminModule } from './admin/admin.module';
-import { MecanicaAccountModule } from './account/account.module';
-import { MecanicaEntityModule } from './entities/entity.module';
-import { PaginationConfig } from './blocks/config/uib-pagination.config';
-// jhipster-needle-angular-add-module-import JHipster will add new module here
-import {
-    JhiMainComponent,
-    NavbarComponent,
-    FooterComponent,
-    ProfileService,
-    PageRibbonComponent,
-    ActiveMenuDirective,
-    ErrorComponent
-} from './layouts';
-import { MecanicaLayoutsModule } from './layouts/layouts.module';
-import { NgxBarcodeModule } from 'ngx-barcode';
-import { LayoutsComponent } from './layouts/layouts.component';
+
+import { ActiveMenuDirective } from './layouts/main/active-menu.directive';
 import { AppComponent } from './app.component';
-import { MecanicaLoginComponent } from './login/login.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { LayoutsComponent } from './layouts/layouts.component';
 import { MenuItems } from './shared/menu-items/menu-items';
+import { Ng2Webstorage } from 'ngx-webstorage';
+import { PaginationConfig } from './blocks/config/uib-pagination.config';
+import { MecanicaAccountModule } from './account/account.module';
+import { MecanicaAppRoutingModule } from './app-routing.module';
+import { MecanicaLayoutsModule } from './layouts/layouts.module';
+import { MecanicaLoginComponent } from './login/login.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { XAuthInterceptor } from './blocks/interceptor/x-auth.interceptor';
+import { NgxBarcodeModule } from 'ngx-barcode';
+
+// jhipster-needle-angular-add-module-import JHipster will add new module here
 
 @NgModule({
     imports: [
@@ -37,10 +26,7 @@ import { XAuthInterceptor } from './blocks/interceptor/x-auth.interceptor';
         MecanicaAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
         MecanicaSharedModule,
-        MecanicaHomeModule,
-        MecanicaAdminModule,
         MecanicaAccountModule,
-        MecanicaEntityModule,
         MecanicaLayoutsModule,
         NgxBarcodeModule
         // jhipster-needle-angular-add-module JHipster will add new module here

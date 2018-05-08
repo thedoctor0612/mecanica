@@ -12,29 +12,30 @@ import {
     PageRibbonComponent,
     ErrorComponent
 } from './';
-import { StockLayoutsRoutingModule, LAYOUT_COMPONENTS, LAYOUT_ENTRIES, LAYOUT_PROVIDERS } from './layouts.routes';
+import { StockLayoutsRoutingModule } from './layouts.routes';
 import { CommonModule } from '@angular/common';
 import { NgxBarcodeModule } from 'ngx-barcode';
+import { MecanicaEntityModule } from '../entities/entity.module';
+import { MecanicaAdminModule } from '../admin/admin.module';
 
 @NgModule({
     imports: [
         CommonModule,
         MecanicaSharedModule,
+        MecanicaEntityModule,
+        MecanicaAdminModule,
         StockLayoutsRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
         NgxBarcodeModule
     ],
     declarations: [
-        LAYOUT_COMPONENTS,
         ErrorComponent,
         PageRibbonComponent,
         FooterComponent,
     ],
     entryComponents: [
-        LAYOUT_ENTRIES
     ],
     providers: [
-        LAYOUT_PROVIDERS,
         ProfileService,
         PaginationConfig,
     ],

@@ -9,7 +9,94 @@ eg $input-color: red;
 @import "bootstrap-variables";
 // Import Bootstrap source files from node_modules
 @import 'node_modules/bootstrap/scss/bootstrap';
-@import 'src/main/webapp/content/scss/rtl.scss';
 @import 'node_modules/font-awesome/scss/font-awesome';
 
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */
+
+.table.table-xs td, .table.table-xs th {
+  padding: 0.4rem 0.5rem !important;
+}
+
+.swal2-container {
+  z-index: 9999999999999999 !important;
+}
+
+.wizard {
+  min-height: 20em !important;
+}
+
+table {
+  table-layout: fixed;
+}
+
+.table > thead:first-child > tr:first-child > th:nth-child(n) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table > tbody > tr > td:nth-child(n) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table > tbody > tr > td:nth-child(n):hover {
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.modal-norm > div:first-child {
+    max-width: 1100px;
+    min-width: 971px;
+}
+.modal-medium {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.collapsed {
+  display: inline-block;
+  max-width: 250px;
+  background: green;
+  box-shadow: 2px 2px 3px #aaaaaa;
+  font-size: 1em;
+  padding: 0.25em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  color: #fff;
+}
+
+.collapsed:hover {
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+}
+
+
+
+  .widgettitle {
+    background: #337ab7;
+    color: #fff;
+    padding: 12px 15px;
+    font-size: 14px;
+    white-space: normal;
+    height: auto;
+}
+.clickable {
+  font-size: 14px;
+  cursor: pointer;
+}
+.fa-16 {
+  font-size: 16px;
+}
+.tenRMargin {
+  margin-right: 10px;
+}
+  /* Ensure that the demo table scrolls */
+  th, td { white-space: nowrap; }
+  div.dataTables_wrapper {
+      width: 800px;
+      margin: 0 auto;
+  }

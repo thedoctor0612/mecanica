@@ -1,19 +1,21 @@
+import { MecanicaLoginComponent } from './login/login.component';
+import { UserRouteAccessService } from './shared/auth/user-route-access-service';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { errorRoute, navbarRoute } from './layouts';
-import { DEBUG_INFO_ENABLED } from './app.constants';
+import { RouterModule, Route, Routes } from '@angular/router';
+import { errorRoute } from './layouts';
+import { loginRoute } from './login/login.route';
 
-const LAYOUT_ROUTES = [
-    navbarRoute,
-    ...errorRoute
+const routes: Routes = [
+    { path: 'login', component: MecanicaLoginComponent },
+    { path: '', redirectTo: '/article', pathMatch: 'full' },
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(LAYOUT_ROUTES, { useHash: true , enableTracing: DEBUG_INFO_ENABLED })
+        RouterModule.forRoot(routes, { useHash: true })
     ],
     exports: [
         RouterModule
     ]
 })
-export class MecanicaAppRoutingModule {}
+export class MecanicaAppRoutingModule { }

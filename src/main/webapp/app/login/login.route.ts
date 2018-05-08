@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { StockLoginComponent } from './login.component';
+import { MecanicaLoginComponent } from './login.component';
 
 export const loginRoute: Routes = [
     {
         path: 'login',
-        component: StockLoginComponent,
+        component: MecanicaLoginComponent,
         data: {
             authorities: [],
             pageTitle: 'login.title'
