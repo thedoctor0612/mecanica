@@ -1,9 +1,8 @@
 import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { PasswordResetFinishService } from './password-reset-finish.service';
-import { LoginModalService } from '../../../shared';
 
 @Component({
     selector: 'jhi-password-reset-finish',
@@ -21,9 +20,9 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
 
     constructor(
         private passwordResetFinishService: PasswordResetFinishService,
-        private loginModalService: LoginModalService,
         private route: ActivatedRoute,
-        private elementRef: ElementRef, private renderer: Renderer
+        private elementRef: ElementRef, private renderer: Renderer,
+        private router: Router
     ) {
     }
 
@@ -37,7 +36,7 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         if (this.elementRef.nativeElement.querySelector('#password') != null) {
-          this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#password'), 'focus', []);
+            this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#password'), 'focus', []);
         }
     }
 
@@ -47,7 +46,7 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
         if (this.resetAccount.password !== this.confirmPassword) {
             this.doNotMatch = 'ERROR';
         } else {
-            this.passwordResetFinishService.save({key: this.key, newPassword: this.resetAccount.password}).subscribe(() => {
+            this.passwordResetFinishService.save({ key: this.key, newPassword: this.resetAccount.password }).subscribe(() => {
                 this.success = 'OK';
             }, () => {
                 this.success = null;
@@ -57,6 +56,6 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
     }
 
     login() {
-        this.modalRef = this.loginModalService.open();
+        this.router.navigate(['login']);
     }
 }

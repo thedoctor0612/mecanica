@@ -4,15 +4,15 @@ import { RouterModule } from '@angular/router';
 import { MecanicaSharedModule } from '../shared';
 
 import {
-    Register,
     ActivateService,
     PasswordService,
+    ProfileService,
     PasswordResetInitService,
     PasswordResetFinishService,
     PasswordStrengthBarComponent,
-    RegisterComponent,
     ActivateComponent,
     PasswordComponent,
+    ProfileComponent,
     PasswordResetInitComponent,
     PasswordResetFinishComponent,
     SettingsComponent,
@@ -26,20 +26,20 @@ import {
     ],
     declarations: [
         ActivateComponent,
-        RegisterComponent,
         PasswordComponent,
+        ProfileComponent,
         PasswordStrengthBarComponent,
         PasswordResetInitComponent,
         PasswordResetFinishComponent,
         SettingsComponent
     ],
     providers: [
-        Register,
         ActivateService,
         PasswordService,
         PasswordResetInitService,
-        PasswordResetFinishService
+        PasswordResetFinishService,
+        ProfileService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MecanicaAccountModule {}
+export class MecanicaAccountModule { }

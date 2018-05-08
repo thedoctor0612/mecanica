@@ -38,20 +38,6 @@ const MENUITEMS: Menu[] = [
     label: 'entity.common.dashboard',
     main: [
       {
-        state: 'product',
-        short_label: 'P',
-        name: 'entity.product.default',
-        type: 'link',
-        icon: 'fa fa-archive'
-      },
-      {
-        state: 'supplier',
-        short_label: 'S',
-        name: 'entity.supplier.default',
-        type: 'link',
-        icon: 'fa fa-user'
-      },
-      {
         state: 'article',
         short_label: 'A',
         name: 'entity.article.default',
@@ -59,32 +45,18 @@ const MENUITEMS: Menu[] = [
         icon: 'fa fa-list-alt'
       },
       {
-        state: 'kit',
+        state: 'car',
         short_label: 'K',
         name: 'entity.kit.default',
         type: 'link',
         icon: 'fa fa-shopping-bag'
       },
       {
-        state: 'commande',
+        state: 'bloc',
         short_label: 'O',
         name: 'entity.commande.default',
         type: 'link',
         icon: 'fa fa-pencil-square-o'
-      },
-      {
-        state: 'delivered-equipement',
-        short_label: 'D',
-        name: 'entity.deliveredEquipement.default',
-        type: 'link',
-        icon: 'fa fa-truck'
-      },
-      {
-        state: 'stock-movement',
-        short_label: 'M',
-        name: 'entity.stockMovement.default',
-        type: 'link',
-        icon: 'fa fa-exchange'
       },
     ],
   },

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { SERVER_API_URL } from '../../app.constants';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Injectable()
 export class AuthServerProvider {
@@ -17,16 +17,17 @@ export class AuthServerProvider {
         return this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken');
     }
 
-    login(credentials): Observable<any> {
+    login(credentials): Observable<HttpResponse<any>> {
 
         const data = {
             username: credentials.username,
             password: credentials.password,
             rememberMe: credentials.rememberMe
         };
-        return this.http.post(SERVER_API_URL + 'api/authenticate', data, {observe : 'response'}).map(authenticateSuccess.bind(this));
+        return this.http.post<any>(SERVER_API_URL + 'api/authenticate', data, {observe: 'response'}).map(authenticateSuccess.bind(this));
 
         function authenticateSuccess(resp) {
+            console.log(resp)
             const bearerToken = resp.headers.get('Authorization');
             if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
                 const jwt = bearerToken.slice(7, bearerToken.length);
