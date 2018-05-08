@@ -3,15 +3,11 @@ import './vendor.ts';
 import { NgModule, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Ng2Webstorage, LocalStorageService, SessionStorageService  } from 'ngx-webstorage';
+import { Ng2Webstorage, LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
-import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
-import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
-import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
 import { MecanicaSharedModule, UserRouteAccessService } from './shared';
-import { MecanicaAppRoutingModule} from './app-routing.module';
+import { MecanicaAppRoutingModule } from './app-routing.module';
 import { MecanicaHomeModule } from './home/home.module';
 import { MecanicaAdminModule } from './admin/admin.module';
 import { MecanicaAccountModule } from './account/account.module';
@@ -29,12 +25,17 @@ import {
 } from './layouts';
 import { MecanicaLayoutsModule } from './layouts/layouts.module';
 import { NgxBarcodeModule } from 'ngx-barcode';
+import { LayoutsComponent } from './layouts/layouts.component';
+import { AppComponent } from './app.component';
+import { MecanicaLoginComponent } from './login/login.component';
+import { MenuItems } from './shared/menu-items/menu-items';
+import { XAuthInterceptor } from './blocks/interceptor/x-auth.interceptor';
 
 @NgModule({
     imports: [
         BrowserModule,
         MecanicaAppRoutingModule,
-        Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
+        Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
         MecanicaSharedModule,
         MecanicaHomeModule,
         MecanicaAdminModule,
@@ -45,51 +46,20 @@ import { NgxBarcodeModule } from 'ngx-barcode';
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
-        JhiMainComponent,
-        NavbarComponent,
-        ErrorComponent,
-        PageRibbonComponent,
-        ActiveMenuDirective,
-        FooterComponent
+        AppComponent,
+        LayoutsComponent,
+        MecanicaLoginComponent,
+        ActiveMenuDirective
     ],
     providers: [
-        ProfileService,
-        PaginationConfig,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: XAuthInterceptor,
+            multi: true,
+        },
         UserRouteAccessService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true,
-            deps: [
-                LocalStorageService,
-                SessionStorageService
-            ]
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthExpiredInterceptor,
-            multi: true,
-            deps: [
-                Injector
-            ]
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ErrorHandlerInterceptor,
-            multi: true,
-            deps: [
-                JhiEventManager
-            ]
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: NotificationInterceptor,
-            multi: true,
-            deps: [
-                Injector
-            ]
-        }
+        MenuItems
     ],
-    bootstrap: [ JhiMainComponent ]
+    bootstrap: [AppComponent]
 })
-export class MecanicaAppModule {}
+export class MecanicaAppModule { }

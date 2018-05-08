@@ -1,0 +1,122 @@
+<!-- <div class="modal-header">
+    <h4 class="modal-title" jhiTranslate="login.title">Sign in</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')"><span aria-hidden="true">x</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">
+                <strong>Failed to sign in!</strong> Please check your credentials and try again.
+            </div>
+        </div>
+        <div class="col-md-8">
+            <form class="form" role="form" (ngSubmit)="login()">
+                <div class="form-group">
+                    <label for="username" jhiTranslate="global.form.username">Login</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}"
+                    [(ngModel)]="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" jhiTranslate="login.form.password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                           [(ngModel)]="password">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="rememberMe">
+                        <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
+                        <span jhiTranslate="login.form.rememberme">Remember me</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" jhiTranslate="login.form.button">Sign in</button>
+            </form>
+            <p></p>
+            <div class="alert alert-warning">
+                <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>
+            </div>
+            <div class="alert alert-warning">
+                <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
+                <a class="alert-link" (click)="register()" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+    <!-- Container-fluid starts -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">
+                    <strong>Failed to sign in!</strong> Please check your credentials and try again.
+                </div>
+                <!-- Authentication card start -->
+                <div class="login-card card-block auth-body mr-auto ml-auto">
+                    <form class="md-float-material" role="form" (ngSubmit)="login()">
+                        <div class="text-center">
+                            <img src="../../content/assets/images/rsz_logo.png" alt="Gradient Able">
+                        </div>
+                        <div class="auth-box">
+                            <div class="row m-b-20">
+                                <div class="col-md-12">
+                                    <h3 class="text-left txt-primary">{{'login.title'|translate}}</h3>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username'|translate}}"
+                                    [(ngModel)]="username">
+                                <span class="md-line"></span>
+                            </div>
+                            <div class="input-group">
+                                <input type="password" class="form-control" name="password" placeholder="{{'login.form.password'|translate}}" [(ngModel)]="password">
+                                <span class="md-line"></span>
+                            </div>
+                            <div class="row m-t-25 text-left">
+                                <div class="col-12">
+                                    <div class="checkbox-fade fade-in-primary d-">
+                                        <label>
+                                            <input type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
+                                            <span class="cr">
+                                                <i class="cr-icon fa fa-check txt-primary"></i>
+                                            </span>
+                                            <span class="text-inverse">{{'login.form.rememberme'|translate}}</span>
+                                        </label>
+                                    </div>
+                                    <div class="forgot-phone text-right f-right">
+                                        <a href="javascript:;" class="text-right f-w-600 text-inverse" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-30">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">{{'login.form.button'|translate}}</button>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>
+                                    <p class="text-inverse text-left">
+                                        <b>Your Authentication Team</b>
+                                    </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="../../content/assets/images/rsz_logo_min.png" alt="small-logo.png">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <!-- end of form -->
+                </div>
+                <!-- Authentication card end -->
+            </div>
+            <!-- end of col-sm-12 -->
+        </div>
+        <!-- end of row -->
+    </div>
+    <!-- end of container-fluid -->
+</section>
